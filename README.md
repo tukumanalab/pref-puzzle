@@ -4,6 +4,20 @@
 
 🌐 **サイト**: https://tukumanalab.github.io/pref-puzzle/
 
+## ギャラリー
+
+複数地方を組み合わせた全体の様子。
+
+![組み合わせた全体の俯瞰](images/assembled-overview.jpg)
+
+関東・中部・近畿などの地形ピース。標高に応じた起伏や河川・境界線が再現されています。
+
+![地形ピースのアップ](images/terrain-pieces.jpg)
+
+各ピース裏面には県コード・都道府県名・県庁所在地を彫刻（裏面から読めるよう左右ミラー反転）。
+
+![栃木県ピースの表面地形と裏面彫刻](images/back-engraving.jpg)
+
 ## 特徴
 
 - 北海道（4地方）・関東・中部・近畿・中国・四国 の地形 STL

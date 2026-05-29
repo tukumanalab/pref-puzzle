@@ -86,6 +86,39 @@ export default function HomePage() {
           </p>
         </header>
 
+        <section className="flex flex-col gap-4">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-widest border-b border-gray-800 pb-2">
+            プリント例
+          </h2>
+          <figure className="flex flex-col gap-2">
+            <img
+              src={`${BASE_PATH}/images/assembled-overview.jpg`}
+              alt="複数地方を組み合わせた全体の俯瞰"
+              loading="lazy"
+              className="w-full rounded-lg border border-gray-800"
+            />
+            <figcaption className="text-gray-500 text-sm">複数地方を組み合わせた全体の様子。</figcaption>
+          </figure>
+          <figure className="flex flex-col gap-2">
+            <img
+              src={`${BASE_PATH}/images/terrain-pieces.jpg`}
+              alt="関東・中部・近畿などの地形ピース"
+              loading="lazy"
+              className="w-full rounded-lg border border-gray-800"
+            />
+            <figcaption className="text-gray-500 text-sm">標高に応じた起伏や河川・境界線が再現されています。</figcaption>
+          </figure>
+          <figure className="flex flex-col gap-2">
+            <img
+              src={`${BASE_PATH}/images/back-engraving.jpg`}
+              alt="ピース裏面に彫刻された県コード・都道府県名"
+              loading="lazy"
+              className="w-full rounded-lg border border-gray-800"
+            />
+            <figcaption className="text-gray-500 text-sm">各ピース裏面には県コード・都道府県名・県庁所在地を彫刻。</figcaption>
+          </figure>
+        </section>
+
         {GROUPS.map((group) => {
           const isOpen = openGroups.has(group.label);
           return (
