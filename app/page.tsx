@@ -138,9 +138,21 @@ export default function HomePage() {
                     <li key={p.code} className="flex items-center justify-between py-4 gap-4">
                       <div className="flex items-center gap-3 min-w-0">
                         <span className="w-1 h-8 rounded-full flex-shrink-0" style={{ background: p.color }} />
-                        <div>
-                          <span className="font-semibold">{p.name}</span>
-                          <span className="ml-2 text-gray-500 text-sm">{p.nameEn}</span>
+                        <div className="min-w-0">
+                          <div>
+                            <span className="font-semibold">{p.name}</span>
+                            <span className="ml-2 text-gray-500 text-sm">{p.nameEn}</span>
+                          </div>
+                          {p.link && (
+                            <a
+                              href={p.link.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs text-blue-400 hover:text-blue-300 underline transition-colors"
+                            >
+                              {p.link.label} ↗
+                            </a>
+                          )}
                         </div>
                       </div>
                       <div className="flex items-center gap-4 flex-shrink-0">

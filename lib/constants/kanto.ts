@@ -6,7 +6,7 @@ export const KANTO_PREFECTURES: PrefectureInfo[] = [
   { code:'10', name:'群馬県',  capital:'前橋',     nameEn:'Gunma',    capitalEn:'Maebashi',   color:'#6ee7b7' },
   { code:'11', name:'埼玉県',  capital:'さいたま', nameEn:'Saitama',  capitalEn:'Saitama',    color:'#6ee7b7' },
   { code:'12', name:'千葉県',  capital:'千葉',     nameEn:'Chiba',    capitalEn:'Chiba',      color:'#6ee7b7' },
-  { code:'13', name:'東京都',  capital:'東京',     nameEn:'Tokyo',    capitalEn:'Tokyo',      color:'#6ee7b7' },
+  { code:'13', name:'東京都',  capital:'東京',     nameEn:'Tokyo',    capitalEn:'Tokyo',      color:'#6ee7b7', link:{ href:'https://tukumanalab.github.io/tokyo-puzzle/', label:'東京都 3D 市区町村パズル' } },
   { code:'14', name:'神奈川県', capital:'横浜',    nameEn:'Kanagawa', capitalEn:'Yokohama',   color:'#6ee7b7' },
 ];
 
