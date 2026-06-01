@@ -180,6 +180,7 @@ export default function HomePage() {
         <footer className="text-xs text-gray-600 border-t border-gray-800 pt-5 flex flex-col gap-1">
           <span>地形: <a href="https://maps.gsi.go.jp/development/ichiran.html" className="underline hover:text-gray-400 transition-colors">国土地理院 基盤地図情報数値標高モデル</a></span>
           <span>行政界: <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-v3_1.html" className="underline hover:text-gray-400 transition-colors">国土交通省 国土数値情報 N03-2024</a></span>
+          <span>ソース: <a href="https://github.com/tukumanalab/pref-puzzle" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-400 transition-colors">GitHub</a></span>
         </footer>
       </div>
 
