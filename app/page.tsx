@@ -80,14 +80,14 @@ export default function HomePage() {
 
         <header className="flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight">3D 都道府県パズル</h1>
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-gray-200 leading-relaxed">
             都道府県の地形を 3D プリントできるパズルです。<br />
             国土地理院の標高データから生成した STL ファイルを配布しています。
           </p>
         </header>
 
         <section className="flex flex-col gap-4">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-widest border-b border-gray-800 pb-2">
+          <h2 className="text-sm font-semibold text-gray-300 uppercase tracking-widest border-b border-gray-800 pb-2">
             プリント例
           </h2>
           <figure className="flex flex-col gap-2">
@@ -97,7 +97,7 @@ export default function HomePage() {
               loading="lazy"
               className="w-full rounded-lg border border-gray-800"
             />
-            <figcaption className="text-gray-500 text-sm">複数地方を組み合わせた全体の様子。</figcaption>
+            <figcaption className="text-gray-300 text-sm">複数地方を組み合わせた全体の様子。</figcaption>
           </figure>
           <figure className="flex flex-col gap-2">
             <img
@@ -106,7 +106,7 @@ export default function HomePage() {
               loading="lazy"
               className="w-full rounded-lg border border-gray-800"
             />
-            <figcaption className="text-gray-500 text-sm">標高に応じた起伏や河川・境界線が再現されています。</figcaption>
+            <figcaption className="text-gray-300 text-sm">標高に応じた起伏や河川・境界線が再現されています。</figcaption>
           </figure>
           <figure className="flex flex-col gap-2">
             <img
@@ -115,7 +115,7 @@ export default function HomePage() {
               loading="lazy"
               className="w-full rounded-lg border border-gray-800"
             />
-            <figcaption className="text-gray-500 text-sm">各ピース裏面には県コード・都道府県名・県庁所在地を彫刻。</figcaption>
+            <figcaption className="text-gray-300 text-sm">各ピース裏面には県コード・都道府県名・県庁所在地を彫刻。</figcaption>
           </figure>
         </section>
 
@@ -127,10 +127,10 @@ export default function HomePage() {
                 onClick={() => toggleGroup(group.label)}
                 className="flex items-center justify-between border-b border-gray-800 pb-2 group"
               >
-                <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-widest group-hover:text-gray-300 transition-colors">
+                <h2 className="text-sm font-semibold text-gray-300 uppercase tracking-widest group-hover:text-gray-100 transition-colors">
                   {group.label}
                 </h2>
-                <span className={`text-gray-600 text-xs transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
+                <span className={`text-gray-300 text-xs transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
               </button>
               {isOpen && (
                 <ul className="flex flex-col divide-y divide-gray-800">
@@ -141,7 +141,7 @@ export default function HomePage() {
                         <div className="min-w-0">
                           <div>
                             <span className="font-semibold">{p.name}</span>
-                            <span className="ml-2 text-gray-500 text-sm">{p.nameEn}</span>
+                            <span className="ml-2 text-gray-300 text-sm">{p.nameEn}</span>
                           </div>
                           {p.link && (
                             <a
@@ -158,7 +158,7 @@ export default function HomePage() {
                       <div className="flex items-center gap-4 flex-shrink-0">
                         <button
                           onClick={() => setPreview({ code: p.code, name: p.name, color: p.color })}
-                          className="text-sm text-gray-500 hover:text-gray-200 transition-colors"
+                          className="text-sm text-gray-300 hover:text-gray-200 transition-colors"
                         >
                           プレビュー
                         </button>
@@ -170,7 +170,7 @@ export default function HomePage() {
                           >
                             ダウンロード
                           </a>
-                          <span className="text-gray-600 text-xs">{FILE_SIZES[p.code]}</span>
+                          <span className="text-gray-300 text-xs">{FILE_SIZES[p.code]}</span>
                         </div>
                       </div>
                     </li>
@@ -189,9 +189,9 @@ export default function HomePage() {
           {zipping ? 'ZIP 作成中...' : '全都県まとめてダウンロード（ZIP）'}
         </button>
 
-        <footer className="text-xs text-gray-600 border-t border-gray-800 pt-5 flex flex-col gap-1">
-          <span>地形: <a href="https://maps.gsi.go.jp/development/ichiran.html" className="underline hover:text-gray-400 transition-colors">国土地理院 基盤地図情報数値標高モデル</a></span>
-          <span>行政界: <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-v3_1.html" className="underline hover:text-gray-400 transition-colors">国土交通省 国土数値情報 N03-2024</a></span>
+        <footer className="text-xs text-gray-300 border-t border-gray-800 pt-5 flex flex-col gap-1">
+          <span>地形: <a href="https://maps.gsi.go.jp/development/ichiran.html" className="underline hover:text-gray-200 transition-colors">国土地理院 基盤地図情報数値標高モデル</a></span>
+          <span>行政界: <a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-v3_1.html" className="underline hover:text-gray-200 transition-colors">国土交通省 国土数値情報 N03-2024</a></span>
         </footer>
       </div>
 
@@ -204,18 +204,18 @@ export default function HomePage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setPreview(null)}
-                className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1"
+                className="text-gray-200 hover:text-white transition-colors text-sm flex items-center gap-1"
                 aria-label="トップへ戻る"
               >
                 ← トップへ
               </button>
               <span className="w-1 h-5 rounded-full flex-shrink-0" style={{ background: preview.color }} />
               <span className="font-semibold">{preview.name}</span>
-              <span className="text-gray-500 text-xs hidden sm:inline">ドラッグで回転 / スクロールでズーム</span>
+              <span className="text-gray-300 text-xs hidden sm:inline">ドラッグで回転 / スクロールでズーム</span>
             </div>
             <button
               onClick={() => setPreview(null)}
-              className="text-gray-500 hover:text-white transition-colors text-xl leading-none px-2"
+              className="text-gray-300 hover:text-white transition-colors text-xl leading-none px-2"
               aria-label="閉じる"
             >
               ✕
