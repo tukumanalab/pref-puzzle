@@ -128,6 +128,10 @@ npm run build # 静的エクスポート → out/
 
 ---
 
+## ライセンス
+
+本プロジェクトのコードは [MIT License](LICENSE) で公開しています。
+
 ## データライセンス
 
 - 地形データ: [国土地理院 基盤地図情報数値標高モデル](https://maps.gsi.go.jp/development/ichiran.html)
