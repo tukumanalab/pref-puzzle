@@ -46,20 +46,50 @@ const OUT_DIR = path.join(process.cwd(), 'public', 'data', 'boundary');
 const N03_URL = (code: string) =>
   `https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2024/N03-20240101_${code}_GML.zip`;
 
-function download(url: string): Promise<Buffer> {
+function downloadOnce(url: string): Promise<Buffer> {
   return new Promise((resolve, reject) => {
     const proto = url.startsWith('https') ? https : http;
-    proto.get(url, { timeout: 60000 }, (res) => {
+    const req = proto.get(url, { timeout: 60000 }, (res) => {
       if (res.statusCode && res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return resolve(download(res.headers.location));
+        res.resume();
+        return resolve(downloadOnce(res.headers.location));
       }
-      if (res.statusCode !== 200) return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
+      if (res.statusCode !== 200) {
+        res.resume();
+        return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
+      }
       const chunks: Buffer[] = [];
       res.on('data', (c: Buffer) => chunks.push(c));
       res.on('end', () => resolve(Buffer.concat(chunks)));
       res.on('error', reject);
-    }).on('error', reject);
+    });
+    req.on('timeout', () => req.destroy(new Error(`Timeout for ${url}`)));
+    req.on('error', reject);
   });
+}
+
+const RETRIES = 5;
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** 国土地理院のサーバーは一時的に 502/503 を返すことがあるため、指数バックオフで再試行する。 */
+async function download(url: string): Promise<Buffer> {
+  let lastErr: unknown;
+  for (let attempt = 1; attempt <= RETRIES; attempt++) {
+    try {
+      return await downloadOnce(url);
+    } catch (e) {
+      lastErr = e;
+      const msg = e instanceof Error ? e.message : String(e);
+      // 4xx（404 など）は再試行しても無駄なので即座に諦める
+      if (/^HTTP 4\d\d /.test(msg) && !/^HTTP (408|429) /.test(msg)) throw e;
+      if (attempt === RETRIES) break;
+      const wait = 2000 * 2 ** (attempt - 1);
+      console.log(`  Retry ${attempt}/${RETRIES - 1} in ${wait / 1000}s (${msg})`);
+      await sleep(wait);
+    }
+  }
+  throw lastErr;
 }
 
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
