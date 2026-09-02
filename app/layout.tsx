@@ -1,9 +1,34 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const SITE_URL = 'https://tukumanalab.github.io/pref-puzzle';
+const TITLE = '3D 都道府県パズル';
+const DESCRIPTION =
+  '国土地理院のDEM（数値標高モデル）から生成した、47都道府県の地形3Dパズル用STLファイルを無料で配布。ブラウザで3Dプレビューでき、個別・一括ダウンロードして3Dプリントできます。';
+const OG_IMAGE = `${SITE_URL}/images/assembled-overview.jpg`;
+
 export const metadata: Metadata = {
-  title: '3D 都道府県パズル',
-  description: '都道府県の地形3Dパズルデータを生成・ダウンロード',
+  metadataBase: new URL(`${SITE_URL}/`),
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: ['3Dパズル', '都道府県', '日本地図', 'STL', '3Dプリント', '地形', 'DEM', '国土地理院'],
+  alternates: { canonical: `${SITE_URL}/` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: 'website',
+    siteName: TITLE,
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/`,
+    locale: 'ja_JP',
+    images: [{ url: OG_IMAGE, width: 1280, height: 960, alt: '組み合わせた3D都道府県パズルの俯瞰' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
